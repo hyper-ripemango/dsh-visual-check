@@ -1,0 +1,56 @@
+{
+  "name": "dsh-visual-check",
+  "version": "0.1.0",
+  "description": "DSH host plugin: give the agent eyes. Capture the screen, a window, a region, or an existing image and hand it to the model as a real ImageBlock, so it can verify what is actually rendered instead of unpacking CSS/DOM. Windows-native capture (no Playwright, no npm dependencies), occlusion detection, and opt-in raise-with-focus-restore.",
+  "type": "module",
+  "main": "./main.mjs",
+  "exports": {
+    ".": "./main.mjs",
+    "./core": "./core.mjs",
+    "./capture": "./capture.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "main.mjs",
+    "core.mjs",
+    "capture.mjs",
+    "grab/VisualGrab.cs",
+    "grab/driver.ps1",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "screenshot",
+    "vision",
+    "visual-verification",
+    "win32",
+    "gdi"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.9"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@deepseek-ai/schemastery": "^3.18.2"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node test/smoke.mjs && node --import ./test/register.mjs test/tool.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyper-ripemango/dsh-visual-check.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hyper-ripemango/dsh-visual-check/issues"
+  },
+  "homepage": "https://github.com/hyper-ripemango/dsh-visual-check#readme"
+}
